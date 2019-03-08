@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/script.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <title>GifTastic!</title>
+  </head>
+  <body onLoad="setup();">
+    <div id="header">
+      <img id="logo" src="./assets/images/logo.svg">
+      <div id="search">
+        <form>
+            <input id="newAnimal" type="text" placeholder="Search Term" />
+            <button id="newAnimalBtn" type="button" onclick="addButton();"><img id="addImage" src="./assets/images/add.svg"> Add</button>
+        </form>
+      </div>
+      <h2>
+        GifTastic Image Search
+      </h2>
+    </div>
+    <div id="animalButtons">
+    </div>
+    <div id="content">
+      <div id="images"></div>
+    </div>
+  </body>
+
+</html>
