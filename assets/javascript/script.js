@@ -5,26 +5,27 @@ var buttons = [
 	'cuphead',
 	'burrito'
 ];
+var limit = 10;
 function addButton() {
 	var newAnimal = document.getElementById('newAnimal');
 	buttons.push(newAnimal.value);
-	var savedButton = $('<button>').html(newAnimal.value);
+	var savedButton = $('<button>').html('#' + newAnimal.value);
 	savedButton.attr('value', newAnimal.value);
 	savedButton.attr('id', newAnimal.value);
 	savedButton.attr('class', 'searchTerm');
 	savedButton.click(function() {
 		$('#images').html('');
 		var searchTerm = this.id;
-
 		var queryURL =
 			'https://api.giphy.com/v1/gifs/search?q=' +
 			searchTerm +
-			'&api_key=ZSZXyJ3vXquP0eg7071aouGOQ3Jtogrf&limit=10';
+			'&api_key=ZSZXyJ3vXquP0eg7071aouGOQ3Jtogrf&limit=' +
+			limit;
 		$.ajax({
 			url    : queryURL,
 			method : 'GET'
 		}).then(function(response) {
-			for (i = 0; i < buttons.length; i++) {
+			for (i = 0; i < limit; i++) {
 				var rating = response.data[i].rating;
 				var gifDiv = $('<div>');
 				var gifs = $('<img>');
@@ -63,7 +64,7 @@ function setup() {
 	});
 	for (i = 0; i < buttons.length; i++) {
 		let buttonLabel = buttons[i];
-		var savedButton = $('<button>').html(buttonLabel);
+		var savedButton = $('<button>').html('#' + buttonLabel);
 		savedButton.attr('value', buttonLabel);
 		savedButton.attr('class', 'searchTerm');
 		savedButton.attr('id', buttonLabel);
@@ -73,12 +74,14 @@ function setup() {
 			var queryURL =
 				'https://api.giphy.com/v1/gifs/search?q=' +
 				searchTerm +
-				'&api_key=ZSZXyJ3vXquP0eg7071aouGOQ3Jtogrf&limit=10';
+				'&api_key=ZSZXyJ3vXquP0eg7071aouGOQ3Jtogrf&limit=' +
+				limit;
 			$.ajax({
 				url    : queryURL,
 				method : 'GET'
 			}).then(function(response) {
-				for (i = 0; i < buttons.length; i++) {
+				console.log(response);
+				for (i = 0; i < limit; i++) {
 					var rating = response.data[i].rating;
 					var gifDiv = $('<div>');
 					var gifs = $('<img>');
